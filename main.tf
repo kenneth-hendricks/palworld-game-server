@@ -16,15 +16,7 @@ locals {
 }
 
 resource "aws_security_group" "this" {
-  name = local.service_name
-
-  # Needed for AU bastions
-  lifecycle {
-    ignore_changes = [
-      name,
-      description
-    ]
-  }
+  name = "game-server-sg"
 }
 
 resource "aws_security_group_rule" "game" {
@@ -46,7 +38,6 @@ resource "aws_security_group_rule" "outbound" {
   ipv6_cidr_blocks  = ["::/0"]
   security_group_id = aws_security_group.this.id
 }
-
 
 resource "aws_key_pair" "this" {
   key_name   = local.service_name
@@ -71,7 +62,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "this" {
   ami                         = data.aws_ami.ubuntu.id
-  instance_type               = "t3.large"
+  instance_type               = "t3.xlarge"
   vpc_security_group_ids      = [aws_security_group.this.id]
   key_name                    = aws_key_pair.this.key_name
   associate_public_ip_address = true

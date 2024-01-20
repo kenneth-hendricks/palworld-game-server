@@ -14,7 +14,7 @@ sudo -u steam -s
 cd /home/steam
 /usr/games/steamcmd
 mkdir logs
-steamcmd +login anonymous +app_update 2394010 validate +quit
+/usr/games/steamcmd +login anonymous +app_update 2394010 validate +quit
 ```
 
 ## Check it works
