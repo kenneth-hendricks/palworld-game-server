@@ -1,0 +1,5 @@
+terraform.tfstate
+terraform.tfstate.backup
+game-server
+game-server.pub
+.terraform*
