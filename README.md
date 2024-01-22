@@ -39,7 +39,7 @@ sudo supervisorctl update
 ```
 [program:palworld]
 directory=/home/steam/Steam/steamapps/common/PalServer
-command=/bin/bash PalServer.sh
+command=/bin/bash -c './PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS'
 user=steam
 process_name=palworld*%(process_num)s
 numprocs=1
